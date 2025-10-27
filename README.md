@@ -1,19 +1,19 @@
 # Tracy
 
-> ⚠️ This package location is temporary. Do not add dependencies.
+> ⚠️ This is an early-stage project with unstable interfaces. Usage at own risk.
 
 Tracy is a Go library for instrumenting applications for the 
 [Tracy](https://github.com/wolfpld/tracy) Frame Profiler. 
 
-This library facilitates the instrumentation of multi-language applications
-composed of multiple shared object files. To enable consistent tracing among
-all of those, all bindings must link to a common shared Tracy Client library.
+To facilitate the tracing of events in multi-language projects, this library
+links dynamically to a (shared) Tracy Client library that needs to be build
+independently. This enables the combined tracing of events from Go, Rust, C++, 
+or other components linked into a single application.
 
 ## Usage
-
 This package can be included in any Go code by importing it using
 ```Go
-import "github.com/HerbertJordan/tracy"
+import "github.com/0xsoniclabs/tracy"
 ```
 If you are implementing a binary, you must start-up the profiler manually using
 ```Go
@@ -52,10 +52,12 @@ go build --tags=enable_tracy ./...
 ```
 When enabled, the resulting executable requires access to shared library 
 offering the Tracy Client functionality. To build the shared Tracy library, run
-the following command
+the following command in the root directory of this project
 ```bash
 make tracy/build/libTracyClient.so
 ```
+You might have to update your LD_LIBRARY_PATH for your executable to find this
+shared library.
 
 ## Inspection
 You can use the command

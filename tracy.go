@@ -1,6 +1,6 @@
 package tracy
 
-import "github.com/HerbertJordan/tracy/internal"
+import "github.com/0xsoniclabs/tracy/internal"
 
 func StartupProfiler() {
 	internal.StartupProfiler()

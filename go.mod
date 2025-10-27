@@ -1,3 +1,3 @@
-module github.com/HerbertJordan/tracy
+module github.com/0xsoniclabs/tracy
 
 go 1.24.2

@@ -2,7 +2,7 @@
 
 package internal
 
-import "github.com/HerbertJordan/tracy/internal/tracy"
+import "github.com/0xsoniclabs/tracy/internal/tracy"
 
 func StartupProfiler() {
 	tracy.StartupProfiler()

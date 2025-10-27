@@ -1,5 +1,7 @@
 .PHONY: all clean test
 
+# Optional flag to enable X11 support in Tracy profiler application (USE_X11==true).
+# The default is wayland only (USE_X11!=false).
 USE_X11 ?= false
 
 ifeq ($(USE_X11),true)
@@ -27,6 +29,6 @@ clean:
 	@rm -rf ./tracy/profiler/build
 	go clean ./...
 
-test:
+test: tracy/build/libTracyClient.so
 	go test -race -count 1 ./...
 	go test -race -count 1 -tags=enable_tracy ./...
