@@ -9,6 +9,7 @@ import "C"
 
 import (
 	"runtime"
+	"unsafe"
 )
 
 func StartupProfiler() {
@@ -34,11 +35,11 @@ func ZoneBegin(name string) Zone {
 
 	return Zone(C.go_tracy_ZoneBegin(
 		C.uint32_t(line),
-		toCString(filename),
+		unsafe.Pointer(&([]byte(filename)[0])),
 		C.size_t(len(filename)),
-		toCString(funcname),
+		unsafe.Pointer(&([]byte(funcname)[0])),
 		C.size_t(len(funcname)),
-		toCString(name),
+		unsafe.Pointer(&([]byte(name)[0])),
 		C.size_t(len(name)),
 	))
 }

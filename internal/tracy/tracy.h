@@ -16,11 +16,11 @@ void go_tracy_FrameMark();
 
 go_tracy_Zone go_tracy_ZoneBegin(
     uint32_t line,
-    const char *file,
+    void* file,
     size_t file_len,
-    const char *function,
+    void* function,
     size_t function_len,
-    const char* name,
+    void* name,
     size_t name_len
 );
 

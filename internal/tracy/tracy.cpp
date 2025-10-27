@@ -28,11 +28,11 @@ thread_local TracyZoneData* go_tracy_zones = nullptr;
 
 go_tracy_Zone go_tracy_ZoneBegin(
     uint32_t line,
-    const char *file,
+    void* file,
     size_t file_len,
-    const char *function,
+    void* function,
     size_t function_len,
-    const char* name,
+    void* name,
     size_t name_len
 ) {
     // Grow stack of tracy zones.
@@ -43,11 +43,11 @@ go_tracy_Zone go_tracy_ZoneBegin(
     // Create source location info.
     auto loc = ___tracy_alloc_srcloc_name(
         line,
-        file,
+        (const char*)file,
         file_len,
-        function,
+        (const char*)function,
         function_len,
-        name,
+        (const char*)name,
         name_len,
         0
     );
